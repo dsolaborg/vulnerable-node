@@ -1,6 +1,7 @@
 version: '2'
 services:
   vulnerable_node:
+    container_name: [TOCHANGEWEB]
     restart: always
     build: .
     ports:
@@ -11,6 +12,7 @@ services:
       - postgres_db
 
   postgres_db:
+    container_name: [TOCHANGEDB]
     restart: always
     build: ./services/postgresql
     ports:
