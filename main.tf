@@ -16,7 +16,7 @@ resource "aws_lb" "front_end" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = ["${lookup(var.sg_id, var.environment)}","sg-07d8de1d6c7dc6303"]
-  subnets            = ["${var.private_subnets_prod}"]
+  subnets            = ["subnet-004db3a8b97237878","subnet-0d26f005d88b4db98"]
 
   enable_deletion_protection = false
 
@@ -38,7 +38,7 @@ resource "aws_lb_target_group" "front_end" {
     healthy_threshold   = 2
     unhealthy_threshold = 2
     timeout             = 3
-    path              = "/login"
+    path              = "/login?returnurl=/"
     interval            = 30
     port                = "3000"
   }
